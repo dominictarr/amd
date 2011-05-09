@@ -1,0 +1,19 @@
+{
+  "name": "amd",
+  "description": "Async Module Definition - module loader/bunder for node + browser",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (bit.ly/dominictarr)",
+  "main": "amd.js",
+  "directories": {
+    "lib": "."
+  },
+  "scripts": {
+    "test": "meta-test test/*.js"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
