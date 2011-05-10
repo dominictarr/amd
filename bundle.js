@@ -1,4 +1,4 @@
-require('mad')
+require('amd')
 
 module.define(['fs','vm'],function (fs,vm){
   var _fn = module.filename
@@ -7,7 +7,7 @@ module.define(['fs','vm'],function (fs,vm){
     var _fn = module.filename
       , path = [].shift.call(arguments)
       , done = [].pop.call(arguments)
-      , minify = [].pop.call(arguments)
+      , minify = ![].pop.call(arguments)
       , filename = resolve(path), refs = {}, rCount = 1, funx = [], modules = {}
 
     function resolve (req,filename){

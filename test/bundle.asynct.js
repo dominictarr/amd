@@ -1,5 +1,5 @@
 require('amd')
-var bundle = require('mad/bundle')
+var bundle = require('amd/bundle')
 
 exports ['test'] = function (test){
 
