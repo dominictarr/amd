@@ -28,39 +28,39 @@ It's not unreasonable, but suddenly loading modules is easy.
 
     //ab.js - amd style
     require('amd')
+    //module.define(dependencies, initializer)
     module.define(['./a', './b'], function AB (a,b){
     
       return {ab: function (x){return a(b(x))} } //exports is returned.
     })
 
-then do `$ amd ab.js`:
+The dependencies array specifies your dependencies, which will be passed 
+as arguments to the initializer function. 
+The return value of the intializer will be the module's exports.
 
-amd will load the modules, get thier dependencies, topologicially sort them, 
-and stringify them, pluging dependencies into the correct places! 
-with very little overhead!
+####then do `$ amd ab.js > ab-browser.js`:
+
+AMD will load the modules, get thier dependencies, topologicially sort them, 
+stringify them, and plug dependencies into the correct places, with very little overhead!
+
+then it will return a script that you can simply include on your page:
 
     (function (M){
     M[1] =
       (function A(){
         return function (x){'!' + x + '!'}
       })();
-  
+    
     M[2] =
       (function B(){
         return function (x){'?' + x + '?'}
       })();
-  
+    
     return  (function AB(a,b){
         return function (x){return a(b(x))} //exports is returned.
       })(M[1],M[2]);
-  
+    
     })({});
-
-## how does it work?
-
-in node - you need to `require('amd')` which monkeypatches module
-adding `define`. define just calles require on your static dependencies
-and then sets module.exports to the value the initializer function returns.
 
 ##what _can't_ AMD do?
 
