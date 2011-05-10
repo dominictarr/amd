@@ -8,7 +8,7 @@ module.define(['fs','vm'],function (fs,vm){
       , path = [].shift.call(arguments)
       , done = [].pop.call(arguments)
       , minify = ![].pop.call(arguments)
-      , filename = resolve(path), refs = {}, rCount = 1, funx = [], modules = {}
+      , filename = resolve(path), refs = {}, rCount = 0, funx = [], modules = {}
 
     function resolve (req,filename){
       module.filename = filename || path 
@@ -54,7 +54,7 @@ module.define(['fs','vm'],function (fs,vm){
 
     function ref (item){
       if(minify)
-        return 'M[' + ( refs[item] ? refs[item] : makeRef(item) ) +']'
+        return 'M[' + ( refs[item] !== undefined ? refs[item] : makeRef(item) ) +']'
       return 'M[' + JSON.stringify(item) + ']'
     }
 

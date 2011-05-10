@@ -13,7 +13,7 @@ It's not unreasonable, but suddenly loading modules is easy.
 ##AMD modules:
 
   * work in browser and node
-  * can be required by normal node modules, with no funny business.
+  * can be required by normal node modules.
   * does not add any overhead to the modules - unlike other node-browser-module systems!
 
 ###the old way:
@@ -30,7 +30,7 @@ It's not unreasonable, but suddenly loading modules is easy.
     require('amd')
     module.define(['./a', './b'], function AB (a,b){
     
-      return function (x){return a(b(x))} //exports is returned.
+      return {ab: function (x){return a(b(x))} } //exports is returned.
     })
 
 then do `$ amd ab.js`:
@@ -55,3 +55,23 @@ with very little overhead!
       })(M[1],M[2]);
   
     })({});
+
+## how does it work?
+
+in node - you need to `require('amd')` which monkeypatches module
+adding `define`. define just calles require on your static dependencies
+and then sets module.exports to the value the initializer function returns.
+
+##what _can't_ AMD do?
+
+AMD does not support:
+
+  * circular dependencies.
+  * dynamic dependencies.
+  * __filename, __dirname, or module variables (in the broswer)
+
+If you think these features should be supported please 
+[mailto:dominic.tarr@gmail.com] (email me) with your usecase.
+
+Currently these features are ingored to keep this module simple, 
+or because they arn't appropiate on browser side modules.
