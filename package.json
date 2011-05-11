@@ -3,17 +3,25 @@
   "description": "Async Module Definition - module loader/bunder for node + browser",
   "version": "0.0.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "git://github.com/dominictarr/amd.git"
   },
   "author": "Dominic Tarr <dominic.tarr@gmail.com> (bit.ly/dominictarr)",
   "main": "amd.js",
   "directories": {
     "lib": "."
   },
+  "bin": {
+    "amd": "go.js"
+  },
   "scripts": {
     "test": "meta-test test/*.js"
   },
   "engines": {
     "node": "*"
-  }
+  },
+  "files": [
+    ""
+  ],
+  "homepage": "https://github.com/dominictarr/amd"
 }
