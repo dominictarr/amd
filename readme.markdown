@@ -73,7 +73,7 @@ AMD does not support:
   * no way to catch errors which may occur in the initializer functions.
  
 If you think these features should be supported please 
-[mailto:dominic.tarr@gmail.com] (email me) with your use-case.
+[email me] (mailto:dominic.tarr@gmail.com) with your use-case.
 
 Currently these features are ignored to keep this module simple, 
 or because they aren't appropriate on browser side modules.
