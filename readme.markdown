@@ -1,21 +1,20 @@
-#a lightweight module loader for node and the browser.
+#A lightweight module loader for node and the browser.
 
 The goal of AMD is to create the simplest possible 
-module loader that is compatible with both node and the browser.
-
-Instead of trying to be too clever and cover every use-case, it's sometimes 
-better to change our problem behaviour to make the messy problem into a clean one.
+module loader that is compatible with both node and the browser. it is a partial implementation of [CommonJS/Modules/SimpleAsynchronous] (http://wiki.commonjs.org/wiki/Modules/SimpleAsynchronous)
 
 AMD forces you to declare all your dependencies up front, 
-and not require anything new after that point.
+and not require anything new after that point. 
 
-It's not unreasonable, but suddenly loading modules is easy.
+This makes module loading easy.
 
 ##AMD modules:
 
   * work in browser and node
   * can be loaded with require() from normal node modules.
   * does not add any overhead to the modules - unlike other node-browser-module systems!
+
+It is necessary to define your modules a new way:
 
 ###the old way:
 
@@ -35,9 +34,9 @@ It's not unreasonable, but suddenly loading modules is easy.
       return {ab: function (x){return a(b(x))} } //exports is returned.
     })
 
-The dependencies array specifies your dependencies, which will be passed 
-as arguments to the initializer function. 
-The return value of the intializer will be the module's exports.
+`module.define` takes two arguments an array of dependencies and a initializer function. 
+the dependencies are loaded and passed to the initializer in the same order that they are in the array. 
+The return value of the initializer is the module's exports.
 
 ####then do `$ amd ab.js > ab-browser.js`:
 
