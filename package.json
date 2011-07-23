@@ -1,6 +1,6 @@
 {
   "name": "amd",
-  "description": "Async Module Definition - module loader/bunder for node + browser",
+  "description": "Async Module Definition - module loader/bundler for node + browser",
   "version": "0.0.0",
   "repository": {
     "type": "git",
